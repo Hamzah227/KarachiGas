@@ -1807,14 +1807,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Karachi Gas.exe" size="550880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Karachi Gas.exe" size="549888">
       <assemblyIdentity name="Karachi Gas" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nYAuW06NWzROxw+HXKOlKsFeeOyZD/Z47JOriM07/YM=</dsig:DigestValue>
+        <dsig:DigestValue>qqSfyoH6uoawoSrn+1qZR0uo1eS1NtF79SCZh0RB+l0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
