@@ -22,7 +22,6 @@ namespace Karachi_Gas.Classes
             return false;
         }
 
-
         public override void InsertSql()
         {
             try
