@@ -46,7 +46,7 @@ namespace Karachi_Gas.Reports
                 try
                 {
                     ErrorResponse response = new ErrorResponse();
-                    dt = DBService.FetchTable("EXEC GetInvoiceThroughID " + saleID + "");
+                    dt = DBService.FetchTable("EXEC GetInvoiceBySaleID " + saleID + "");
                     if (!response.Error)
                     {
                         if (DataHelper.HasRows(dt))
@@ -55,21 +55,21 @@ namespace Karachi_Gas.Reports
                         }
                         else
                         {
-                            XtraMessageBox.Show("INVOICE", "Record does not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XtraMessageBox.Show("Record does not exist!", "INVOICE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
                     else
                     {
-                        XtraMessageBox.Show("INVOICE", response.getErrorMessage(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show(response.getErrorMessage(), "INVOICE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ae)
-                { XtraMessageBox.Show("INVOICE", ae.Message, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                { XtraMessageBox.Show(ae.Message, "INVOICE", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
             else
             {
-                XtraMessageBox.Show("INVOICE", "Enter OR Select Sale ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Enter OR Select Sale ID", "INVOICE", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -112,19 +112,19 @@ namespace Karachi_Gas.Reports
             try
             {
                 ErrorResponse response = new ErrorResponse();
-                dt = DBService.FetchTable("EXEC GetInvoice " + 0 + ",'" + fromDate + "','" + toDate + "'");
+                dt = DBService.FetchTable("EXEC GetInvoiceWRTDate '" + fromDate + "','" + toDate + "'");
                 if (!response.Error)
                 {
                     gridControl1.DataSource = dt;
                 }
                 else
                 {
-                    XtraMessageBox.Show("DB Error", response.ErrorList[0].Message);
+                    XtraMessageBox.Show(response.ErrorList[0].Message, "Database Error");
                 }
             }
             catch (Exception e)
             {
-                XtraMessageBox.Show("Exception error", e.Message);
+                XtraMessageBox.Show(e.Message, "Exception!");
                 throw;
             }
         }
@@ -136,7 +136,7 @@ namespace Karachi_Gas.Reports
 
         private void gridControl1_Click(object sender, EventArgs e)
         {
-            int selectedId = DataHelper.intParse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID"));
+            int selectedId = DataHelper.intParse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "InvoiceId"));
             txtSaleID.Text = selectedId.ToString();
         }
 

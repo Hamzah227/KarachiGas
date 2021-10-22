@@ -48,7 +48,7 @@ namespace Karachi_Gas.Classes
             }
             catch (Exception e)
             {
-                XtraMessageBox.Show("TRANSACTIONS", e.Message);
+                XtraMessageBox.Show(e.Message, "TRANSACTIONS");
                 isSaved = false;
             }
         }

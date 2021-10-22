@@ -18,11 +18,11 @@ namespace Karachi_Gas.Classes
         public string Tax { get; set; }
         public string TaxPayable { get; set; }
         public string TotalWithTax { get; set; }
-        public string PartyId { get; set; }
-        public string PartyName { get; set; }
-        public string PartyAddress { get; set; }
-        public string NTN_No { get; set; }
-        public string CNIC_No { get; set; }
-        public string PartyMobile { get; set; }
+        public string AccID { get; set; }
+        public string Title { get; set; }
+        public string Address_ { get; set; }
+        public string Ntn { get; set; }
+        public string Cnic { get; set; }
+        public string Mobile { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Karachi_Gas.Classes
             try
             {
                 ErrorResponse response = new ErrorResponse();
-                dt = DBService.FetchTable("EXEC GetInvoiceThroughID " + id + "");
+                dt = DBService.FetchTable("EXEC GetInvoiceBySaleID " + id + "");
                 if (!response.Error)
                 {
                     list = dt.ToList<InvoiceDetail>();

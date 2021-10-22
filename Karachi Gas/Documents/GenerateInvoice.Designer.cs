@@ -46,10 +46,10 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSaleID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPartyID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPartyName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -269,10 +269,18 @@
             // colPartyID
             // 
             this.colPartyID.Caption = "Party ID";
-            this.colPartyID.FieldName = "PartyId";
+            this.colPartyID.FieldName = "AccID";
             this.colPartyID.Name = "colPartyID";
             this.colPartyID.Visible = true;
             this.colPartyID.VisibleIndex = 1;
+            // 
+            // colPartyName
+            // 
+            this.colPartyName.Caption = "Party";
+            this.colPartyName.FieldName = "Title";
+            this.colPartyName.Name = "colPartyName";
+            this.colPartyName.Visible = true;
+            this.colPartyName.VisibleIndex = 2;
             // 
             // colDate
             // 
@@ -282,22 +290,6 @@
             this.colDate.Visible = true;
             this.colDate.VisibleIndex = 4;
             // 
-            // colTotal
-            // 
-            this.colTotal.Caption = "Total Amount With Tax";
-            this.colTotal.FieldName = "TotalAmountInclTax";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 3;
-            // 
-            // colPartyName
-            // 
-            this.colPartyName.Caption = "Party";
-            this.colPartyName.FieldName = "PartyName";
-            this.colPartyName.Name = "colPartyName";
-            this.colPartyName.Visible = true;
-            this.colPartyName.VisibleIndex = 2;
-            // 
             // colTotalAmount
             // 
             this.colTotalAmount.Caption = "Total Incl. Tax";
@@ -305,6 +297,14 @@
             this.colTotalAmount.Name = "colTotalAmount";
             this.colTotalAmount.Visible = true;
             this.colTotalAmount.VisibleIndex = 3;
+            // 
+            // colTotal
+            // 
+            this.colTotal.Caption = "Total Amount With Tax";
+            this.colTotal.FieldName = "TotalAmountInclTax";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.Visible = true;
+            this.colTotal.VisibleIndex = 3;
             // 
             // GenerateInvoice
             // 

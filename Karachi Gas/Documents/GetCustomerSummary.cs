@@ -35,29 +35,27 @@ namespace Karachi_Gas.Reports
         void PopulateLookupEdits()
         {
             lookUpCompany.Properties.DataSource = Classes.GetData.GetCompany(0);
-            lookUpCompany.Properties.DisplayMember = "CompanyName";
-            lookUpCompany.Properties.ValueMember = "CompID";
+            lookUpCompany.Properties.DisplayMember = "Name";
+            lookUpCompany.Properties.ValueMember = "AccID";
             lookUpCompany.Properties.PopulateColumns();
-            lookUpCompany.Properties.Columns["AccCode"].Visible = false;
-            lookUpCompany.Properties.Columns["CompID"].Visible = false;
-            lookUpCompany.Properties.Columns["CompAddress"].Visible = false;
+            lookUpCompany.Properties.Columns["AccID"].Visible = false;
+            lookUpCompany.Properties.Columns["ID"].Visible = false;
+            lookUpCompany.Properties.Columns["Address_"].Visible = false;
             lookUpCompany.Properties.Columns["Phone"].Visible = false;
             lookUpCompany.Properties.Columns["Fax"].Visible = false;
-            lookUpCompany.Properties.Columns["UserID"].Visible = false;
             lookUpCompany.Properties.Columns["DTStamp"].Visible = false;
 
             lookUpEdit1.Properties.DataSource = Classes.GetData.GetParty(0);
-            lookUpEdit1.Properties.DisplayMember = "PartyName";
-            lookUpEdit1.Properties.ValueMember = "PartyID";
+            lookUpEdit1.Properties.DisplayMember = "Name";
+            lookUpEdit1.Properties.ValueMember = "AccID";
             lookUpEdit1.Properties.PopulateColumns();
-            lookUpEdit1.Properties.Columns["AccCode"].Visible = false;
-            lookUpEdit1.Properties.Columns["PartyID"].Visible = false;
-            lookUpEdit1.Properties.Columns["PartyAddress"].Visible = false;
-            lookUpEdit1.Properties.Columns["PartyPhone"].Visible = false;
-            lookUpEdit1.Properties.Columns["PartyMobile"].Visible = false;
-            lookUpEdit1.Properties.Columns["CNIC_No"].Visible = false;
-            lookUpEdit1.Properties.Columns["NTN_No"].Visible = false;
-            lookUpEdit1.Properties.Columns["UserID"].Visible = false;
+            lookUpEdit1.Properties.Columns["AccID"].Visible = false;
+            lookUpEdit1.Properties.Columns["ID"].Visible = false;
+            lookUpEdit1.Properties.Columns["Address_"].Visible = false;
+            lookUpEdit1.Properties.Columns["Phone"].Visible = false;
+            lookUpEdit1.Properties.Columns["Mobile"].Visible = false;
+            lookUpEdit1.Properties.Columns["Cnic"].Visible = false;
+            lookUpEdit1.Properties.Columns["Ntn"].Visible = false;
             lookUpEdit1.Properties.Columns["DTStamp"].Visible = false;
         }
 
