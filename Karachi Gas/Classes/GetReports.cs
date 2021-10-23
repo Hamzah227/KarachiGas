@@ -64,17 +64,17 @@ namespace Karachi_Gas.Classes
     class GetCustomerSummary : AbstractMembers
     {
         DataTable dt;
-        
+        List<CustomerSummaryDetails> list;
         public override List<CustomerSummaryDetails> PrintCustomerSummary (Int64 compId)
         {
-            List<CustomerSummaryDetails> list;
             try
             {
                 ErrorResponse response = new ErrorResponse();
-                dt = DBService.FetchTable("EXEC GetCustomerSummary " + compId + "," + 0);
+                dt = DBService.FetchTable("EXEC GetCustomerSummary");
                 if (!response.Error)
                 {
                     list = dt.ToList<CustomerSummaryDetails>();
+                    Calculations();
                     return list;
                 }
                 return null;
@@ -83,6 +83,14 @@ namespace Karachi_Gas.Classes
             {
                 XtraMessageBox.Show(ae.Message, "CustomerSummary", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        public void Calculations()
+        {
+            foreach (var item in list)
+            {
+                
             }
         }
     }

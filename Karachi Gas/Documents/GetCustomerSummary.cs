@@ -145,5 +145,7 @@ namespace Karachi_Gas.Reports
                 partyId = (Int64)lookUpEdit1.EditValue;
             }
         }
+
+
     }
 }
