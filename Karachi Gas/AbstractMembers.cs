@@ -13,7 +13,7 @@ namespace Karachi_Gas
         public virtual void GetSql() { }
         public virtual void PrintReport(Int64 T) { }
         public virtual List<InvoiceDetail> PrintInvoice(Int64 id) { return new List<InvoiceDetail>(); }
-        public virtual List<CustomerSummaryDetails> PrintCustomerSummary(Int64 id) { return new List<CustomerSummaryDetails>(); }
+        public virtual List<AccountSummary> PrintCustomerSummary(Int64 id) { return new List<AccountSummary>(); }
         public virtual List<NewCustomerLedger> PrintLedger(Int64 id) { return new List<NewCustomerLedger>(); }
         public virtual List<SaleDetails> PrintSaleDetails(Int64 id) { return new List<SaleDetails>(); }
         public virtual List<PurchaseLedgerDetails> PrintPurchaseLedger(Int64 id) { return new List<PurchaseLedgerDetails>(); }

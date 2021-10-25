@@ -28,7 +28,7 @@ namespace Karachi_Gas.Documents
             report.CreateDocument();
         }
 
-        public void PrintCustomerSummary(List<Models.CustomerSummaryDetails> data)
+        public void PrintCustomerSummary(List<Models.AccountSummary> data)
         {
             CustomerSummary report = new CustomerSummary();
             report.LoadData(data);
@@ -62,15 +62,6 @@ namespace Karachi_Gas.Documents
             report.innitData(list, from, to);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
-        }
-
-        public void printCustomerSummaryPartyWise(List<Models.GetCustSummarPartyWise> list, string from, string to)
-        {
-            CustomerSummary report = new CustomerSummary();
-            report.LoadDataPartyWise(list, from, to);
-            documentViewer1.DocumentSource = report;
-            report.CreateDocument();
-
         }
     }
 }

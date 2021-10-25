@@ -63,19 +63,33 @@ namespace Karachi_Gas.Classes
 
     class GetCustomerSummary : AbstractMembers
     {
+        List<AccountSummary> accountSummary;
+        Int64 totalC;
+        Int64 totalD;
+        Int64 totalS;
+
+        Int64 totalC_E;
+        Int64 totalD_E;
+        Int64 totalS_E;
+
+        Int64 remC;
+        Int64 remD;
+        Int64 remS;
         DataTable dt;
-        List<CustomerSummaryDetails> list;
-        public override List<CustomerSummaryDetails> PrintCustomerSummary (Int64 compId)
+        DataTable dtNew;
+        List<AccountSummary> list;
+        public override List<AccountSummary> PrintCustomerSummary (Int64 compId)
         {
             try
             {
                 ErrorResponse response = new ErrorResponse();
-                dt = DBService.FetchTable("EXEC GetCustomerSummary");
+                dt = DBService.FetchTable("EXEC GetAccountsSummary");
+                dtNew = DBService.FetchTable("EXEC GetParty 0");
                 if (!response.Error)
                 {
-                    list = dt.ToList<CustomerSummaryDetails>();
+                    list = dt.ToList<AccountSummary>();
                     Calculations();
-                    return list;
+                    return accountSummary;
                 }
                 return null;
             }
@@ -88,10 +102,46 @@ namespace Karachi_Gas.Classes
 
         public void Calculations()
         {
-            foreach (var item in list)
+            List<Int64> calculatedAccounts = new List<Int64>();
+            try
             {
-                
+                accountSummary = new List<AccountSummary>();
+                foreach (AccountSummary item in list)
+                {
+                    if (item.PartyAccID != 0 && !calculatedAccounts.Contains(item.PartyAccID))
+                    {
+                        string expression = "AccID = " + item.PartyAccID;
+                        Sum(item.PartyAccID);
+                        accountSummary.Add(new AccountSummary()
+                        {
+                            PartyAccID = item.PartyAccID,
+                            PartyBalance = item.PartyBalance,
+                            PartyTitle = dtNew.Select(expression)[0].Field<string>("Name"),
+                            QtyC = remC,
+                            QtyD = remD,
+                            QtyS = remS
+                        });
+                    }
+                    calculatedAccounts.Add(item.PartyAccID);
+                }
             }
+            catch (Exception e)
+            { }
+        }
+
+        void Sum(Int64 AccId)
+        {
+            totalC = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId).Sum(x => x.QtyC);
+            totalD = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId).Sum(x => x.QtyD);
+            totalS = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId).Sum(x => x.QtyS);
+
+            totalC_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId).Sum(x => x.QtyC);
+            totalD_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId).Sum(x => x.QtyD);
+            totalS_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId).Sum(x => x.QtyS);
+
+            remC = totalC - totalC_E;
+            remD = totalD - totalD_E;
+            remS = totalS - totalS_E;
         }
     }
     class GetCustomerSummaryPartyWise : AbstractMembers

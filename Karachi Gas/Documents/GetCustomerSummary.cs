@@ -65,7 +65,7 @@ namespace Karachi_Gas.Reports
             string to = dtTo.EditValue.ToString();
             if (!chkForParty.Checked)
             {
-                List<Models.CustomerSummaryDetails> list;
+                List<Models.AccountSummary> list;
                 if (chkEditAllComp.Checked)
                 {
                     list = getCustomerSummary.PrintCustomerSummary(0);
@@ -104,7 +104,7 @@ namespace Karachi_Gas.Reports
                     frmDoc = new ViewDoc();
                     frmDoc.MdiParent = Karachi_Gas.frm_Main.ActiveForm;
                     frmDoc.Dock = DockStyle.Fill;
-                    frmDoc.printCustomerSummaryPartyWise(list, from, to);
+                    //frmDoc.printCustomerSummaryPartyWise(list, from, to);
                     frmDoc.Show();
                     frmDoc.BringToFront();
                 }
