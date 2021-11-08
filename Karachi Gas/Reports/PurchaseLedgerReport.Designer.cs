@@ -179,14 +179,14 @@ namespace Karachi_Gas.Reports
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.Text = "Date";
-            this.xrTableCell1.Weight = 1D;
+            this.xrTableCell1.Weight = 0.86884586805292829D;
             // 
             // xrTableCell2
             // 
             this.xrTableCell2.Multiline = true;
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Text = "Narration";
-            this.xrTableCell2.Weight = 1.4846185233288558D;
+            this.xrTableCell2.Weight = 1.5047962582949954D;
             // 
             // xrTableCell3
             // 
@@ -195,7 +195,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.StylePriority.UseFont = false;
             this.xrTableCell3.Text = "Qty/Rate 44.5 KG";
-            this.xrTableCell3.Weight = 0.88411314297566368D;
+            this.xrTableCell3.Weight = 0.85384650358023384D;
             // 
             // xrTableCell4
             // 
@@ -204,7 +204,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.StylePriority.UseFont = false;
             this.xrTableCell4.Text = "Qty/Rate 11.8 Kg";
-            this.xrTableCell4.Weight = 0.82090201781763594D;
+            this.xrTableCell4.Weight = 0.962145054193998D;
             // 
             // xrTableCell5
             // 
@@ -286,7 +286,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.Text = "Date";
             this.xrTableCell9.TextFormatString = "{0:M/d/yy}";
-            this.xrTableCell9.Weight = 1.5103839238871866D;
+            this.xrTableCell9.Weight = 1.3122909229107111D;
             // 
             // xrTableCell10
             // 
@@ -295,7 +295,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell10.Multiline = true;
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.Text = "Narration";
-            this.xrTableCell10.Weight = 2.2423438636098192D;
+            this.xrTableCell10.Weight = 2.2728203280392441D;
             // 
             // xrTableCell11
             // 
@@ -306,7 +306,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell11.StylePriority.UseTextAlignment = false;
             this.xrTableCell11.Text = "Qty/Rate 44.5 KG";
             this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell11.Weight = 0.6284380228109081D;
+            this.xrTableCell11.Weight = 0.64367491575402491D;
             // 
             // xrTableCell21
             // 
@@ -318,7 +318,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell21.Text = "xrTableCell21";
             this.xrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell21.TextFormatString = "{0:0,0.0}";
-            this.xrTableCell21.Weight = 0.70691264395859432D;
+            this.xrTableCell21.Weight = 0.64596150079520531D;
             // 
             // xrTableCell12
             // 
@@ -329,7 +329,7 @@ namespace Karachi_Gas.Reports
             this.xrTableCell12.StylePriority.UseTextAlignment = false;
             this.xrTableCell12.Text = "Qty/Rate 11.8 Kg";
             this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell12.Weight = 0.53682690228503582D;
+            this.xrTableCell12.Weight = 0.75015768905235847D;
             // 
             // xrTableCell22
             // 
