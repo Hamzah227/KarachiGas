@@ -8,6 +8,8 @@ namespace Karachi_Gas.Reports
 {
     public partial class GetCustomerSummary : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        string from = string.Empty;
+        string to = string.Empty;
         public GetCustomerSummary()
         {
             InitializeComponent();
@@ -16,8 +18,8 @@ namespace Karachi_Gas.Reports
         public static DataTable dt = new DataTable();
         public static bool allComp = false;
         Int64 compId, partyId;
-        Classes.GetCustomerSummary getCustomerSummary = new Classes.GetCustomerSummary();
-        Classes.GetCustomerSummaryPartyWise getCustomerSummaryPartyWise = new Classes.GetCustomerSummaryPartyWise();
+        Classes.GetCustomerSummary getCustomerSummary;
+        Classes.GetCustomerSummaryPartyWise getCustomerSummaryPartyWise;
 
         private void GetCustomerSummary_Load(object sender, EventArgs e)
         {
@@ -29,7 +31,20 @@ namespace Karachi_Gas.Reports
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ViewSummary();
+            if (partyAll.Checked && compId != 0)
+            {
+                getCustomerSummary = new Classes.GetCustomerSummary();
+                ViewSummaryForAllParty();
+            }
+            else if (compAll.Checked && partyId != 0)
+            {
+                getCustomerSummaryPartyWise = new Classes.GetCustomerSummaryPartyWise();
+                ViewSummaryForAllCompany();
+            }
+            else if (partyAll.Checked && compAll.Checked)
+            {
+                ViewSummaryForAllCompanyAndParty();
+            }
         }
 
         void PopulateLookupEdits()
@@ -59,14 +74,14 @@ namespace Karachi_Gas.Reports
             lookUpEdit1.Properties.Columns["DTStamp"].Visible = false;
         }
 
-        void ViewSummary()
+        void ViewSummaryForAllParty()
         {
-            string from = dtFrom.EditValue.ToString();
-            string to = dtTo.EditValue.ToString();
-            if (!chkForParty.Checked)
+            from = dtFrom.EditValue.ToString();
+            to = dtTo.EditValue.ToString();
+            if (!emptyDetails.Checked)
             {
                 List<Models.AccountSummary> list;
-                if (chkEditAllComp.Checked)
+                if (compAll.Checked)
                 {
                     list = getCustomerSummary.PrintCustomerSummary(0);
                 }
@@ -86,7 +101,7 @@ namespace Karachi_Gas.Reports
                     frmDoc.BringToFront();
                 }
             }
-            else if (chkForParty.Checked)
+            else if (emptyDetails.Checked)
             {
                 List<Models.GetCustSummarPartyWise> list;
                 if (partyAll.Checked)
@@ -110,7 +125,53 @@ namespace Karachi_Gas.Reports
                 }
             }
         }
+        void ViewSummaryForAllCompany()
+        {
+            from = dtFrom.EditValue.ToString();
+            to = dtTo.EditValue.ToString();
+            if (!emptyDetails.Checked)
+            {
+                List<Models.AccountSummary> list;
+                list = getCustomerSummaryPartyWise.PrintCustomerSummary(this.partyId);
 
+                ViewDoc frmDoc = null;
+                if (frmDoc == null || frmDoc.Text == "")
+                {
+                    frmDoc = new ViewDoc();
+                    frmDoc.MdiParent = Karachi_Gas.frm_Main.ActiveForm;
+                    frmDoc.Dock = DockStyle.Fill;
+                    frmDoc.PrintCustomerSummaryPartyWise(list);
+                    frmDoc.Show();
+                    frmDoc.BringToFront();
+                }
+            }
+            else if (emptyDetails.Checked)
+            {
+                List<Models.GetCustSummarPartyWise> list;
+                if (partyAll.Checked)
+                {
+                    list = getCustomerSummaryPartyWise.PrintCustomerSummaryPartyWise(0);
+                }
+                else
+                {
+                    list = getCustomerSummaryPartyWise.PrintCustomerSummaryPartyWise(partyId);
+                }
+
+                ViewDoc frmDoc = null;
+                if (frmDoc == null || frmDoc.Text == "")
+                {
+                    frmDoc = new ViewDoc();
+                    frmDoc.MdiParent = Karachi_Gas.frm_Main.ActiveForm;
+                    frmDoc.Dock = DockStyle.Fill;
+                    //frmDoc.printCustomerSummaryPartyWise(list, from, to);
+                    frmDoc.Show();
+                    frmDoc.BringToFront();
+                }
+            }
+        }
+        void ViewSummaryForAllCompanyAndParty()
+        {
+        }
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -123,7 +184,7 @@ namespace Karachi_Gas.Reports
 
         private void chkEditAllParty_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (chkEditAllComp.Checked)
+            if (compAll.Checked)
             {
                 lookUpCompany.Enabled = false;
             }

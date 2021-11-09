@@ -10,10 +10,10 @@ namespace Karachi_Gas.Reports
             InitializeComponent();
         }
 
-        public void LoadData(List<Models.GetCustSummarPartyWise> data)
+        public void LoadData(List<Models.AccountSummary> data)
         {
-            xrCellDate.Text = DateTime.Now.ToString("dd-MMM-yy h:mm:ss tt");
-            objectDataSource1.DataSource = data;
+            //xrCellDate.Text = DateTime.Now.ToString("dd-MMM-yy h:mm:ss tt");
+            objectDataSource2.DataSource = data;
         }
 
     }

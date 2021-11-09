@@ -36,10 +36,10 @@ namespace Karachi_Gas.Reports
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupControlCompany = new DevExpress.XtraEditors.GroupControl();
             this.partyAll = new DevExpress.XtraEditors.CheckEdit();
-            this.chkForParty = new DevExpress.XtraEditors.CheckEdit();
+            this.emptyDetails = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.chkEditAllComp = new DevExpress.XtraEditors.CheckEdit();
+            this.compAll = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.dtTo = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -50,9 +50,9 @@ namespace Karachi_Gas.Reports
             ((System.ComponentModel.ISupportInitialize)(this.groupControlCompany)).BeginInit();
             this.groupControlCompany.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.partyAll.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkForParty.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptyDetails.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEditAllComp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTo.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFrom.Properties.CalendarTimeProperties)).BeginInit();
@@ -73,7 +73,7 @@ namespace Karachi_Gas.Reports
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(921, 146);
+            this.ribbonControl1.Size = new System.Drawing.Size(921, 143);
             // 
             // barButtonItem1
             // 
@@ -115,10 +115,10 @@ namespace Karachi_Gas.Reports
             this.groupControlCompany.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupControlCompany.AppearanceCaption.Options.UseFont = true;
             this.groupControlCompany.Controls.Add(this.partyAll);
-            this.groupControlCompany.Controls.Add(this.chkForParty);
+            this.groupControlCompany.Controls.Add(this.emptyDetails);
             this.groupControlCompany.Controls.Add(this.labelControl4);
             this.groupControlCompany.Controls.Add(this.lookUpEdit1);
-            this.groupControlCompany.Controls.Add(this.chkEditAllComp);
+            this.groupControlCompany.Controls.Add(this.compAll);
             this.groupControlCompany.Controls.Add(this.labelControl3);
             this.groupControlCompany.Controls.Add(this.dtTo);
             this.groupControlCompany.Controls.Add(this.labelControl2);
@@ -127,28 +127,28 @@ namespace Karachi_Gas.Reports
             this.groupControlCompany.Controls.Add(this.lookUpCompany);
             this.groupControlCompany.Location = new System.Drawing.Point(12, 152);
             this.groupControlCompany.Name = "groupControlCompany";
-            this.groupControlCompany.Size = new System.Drawing.Size(897, 173);
+            this.groupControlCompany.Size = new System.Drawing.Size(897, 145);
             this.groupControlCompany.TabIndex = 8;
             this.groupControlCompany.Text = "Range";
             this.groupControlCompany.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControlCompany_Paint);
             // 
             // partyAll
             // 
-            this.partyAll.Location = new System.Drawing.Point(165, 83);
+            this.partyAll.Location = new System.Drawing.Point(264, 58);
             this.partyAll.MenuManager = this.ribbonControl1;
             this.partyAll.Name = "partyAll";
             this.partyAll.Properties.Caption = "All";
             this.partyAll.Size = new System.Drawing.Size(42, 19);
             this.partyAll.TabIndex = 16;
             // 
-            // chkForParty
+            // emptyDetails
             // 
-            this.chkForParty.Location = new System.Drawing.Point(74, 83);
-            this.chkForParty.MenuManager = this.ribbonControl1;
-            this.chkForParty.Name = "chkForParty";
-            this.chkForParty.Properties.Caption = "Empty Details";
-            this.chkForParty.Size = new System.Drawing.Size(85, 19);
-            this.chkForParty.TabIndex = 15;
+            this.emptyDetails.Location = new System.Drawing.Point(312, 58);
+            this.emptyDetails.MenuManager = this.ribbonControl1;
+            this.emptyDetails.Name = "emptyDetails";
+            this.emptyDetails.Properties.Caption = "Empty Details";
+            this.emptyDetails.Size = new System.Drawing.Size(85, 19);
+            this.emptyDetails.TabIndex = 15;
             // 
             // labelControl4
             // 
@@ -170,19 +170,19 @@ namespace Karachi_Gas.Reports
             this.lookUpEdit1.TabIndex = 13;
             this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
             // 
-            // chkEditAllComp
+            // compAll
             // 
-            this.chkEditAllComp.Location = new System.Drawing.Point(264, 31);
-            this.chkEditAllComp.MenuManager = this.ribbonControl1;
-            this.chkEditAllComp.Name = "chkEditAllComp";
-            this.chkEditAllComp.Properties.Caption = "All";
-            this.chkEditAllComp.Size = new System.Drawing.Size(75, 19);
-            this.chkEditAllComp.TabIndex = 12;
-            this.chkEditAllComp.CheckedChanged += new System.EventHandler(this.chkEditAllParty_CheckedChanged_1);
+            this.compAll.Location = new System.Drawing.Point(264, 31);
+            this.compAll.MenuManager = this.ribbonControl1;
+            this.compAll.Name = "compAll";
+            this.compAll.Properties.Caption = "All";
+            this.compAll.Size = new System.Drawing.Size(75, 19);
+            this.compAll.TabIndex = 12;
+            this.compAll.CheckedChanged += new System.EventHandler(this.chkEditAllParty_CheckedChanged_1);
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(9, 139);
+            this.labelControl3.Location = new System.Drawing.Point(9, 114);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(38, 13);
             this.labelControl3.TabIndex = 11;
@@ -191,7 +191,7 @@ namespace Karachi_Gas.Reports
             // dtTo
             // 
             this.dtTo.EditValue = null;
-            this.dtTo.Location = new System.Drawing.Point(74, 136);
+            this.dtTo.Location = new System.Drawing.Point(74, 111);
             this.dtTo.MenuManager = this.ribbonControl1;
             this.dtTo.Name = "dtTo";
             this.dtTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -206,7 +206,7 @@ namespace Karachi_Gas.Reports
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(5, 111);
+            this.labelControl2.Location = new System.Drawing.Point(5, 86);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 9;
@@ -223,7 +223,7 @@ namespace Karachi_Gas.Reports
             // dtFrom
             // 
             this.dtFrom.EditValue = null;
-            this.dtFrom.Location = new System.Drawing.Point(74, 108);
+            this.dtFrom.Location = new System.Drawing.Point(74, 83);
             this.dtFrom.MenuManager = this.ribbonControl1;
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -265,9 +265,9 @@ namespace Karachi_Gas.Reports
             this.groupControlCompany.ResumeLayout(false);
             this.groupControlCompany.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.partyAll.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkForParty.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptyDetails.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEditAllComp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTo.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFrom.Properties.CalendarTimeProperties)).EndInit();
@@ -286,7 +286,7 @@ namespace Karachi_Gas.Reports
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem bbiClose;
         private DevExpress.XtraEditors.GroupControl groupControlCompany;
-        private DevExpress.XtraEditors.CheckEdit chkEditAllComp;
+        private DevExpress.XtraEditors.CheckEdit compAll;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.DateEdit dtTo;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -295,7 +295,7 @@ namespace Karachi_Gas.Reports
         private DevExpress.XtraEditors.LookUpEdit lookUpCompany;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
-        private DevExpress.XtraEditors.CheckEdit chkForParty;
+        private DevExpress.XtraEditors.CheckEdit emptyDetails;
         private DevExpress.XtraEditors.CheckEdit partyAll;
     }
 }

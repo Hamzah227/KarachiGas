@@ -36,6 +36,14 @@ namespace Karachi_Gas.Documents
             report.CreateDocument();
         }
 
+        public void PrintCustomerSummaryPartyWise(List<Models.AccountSummary> data)
+        {
+            CustomerSummaryPartyWise report = new CustomerSummaryPartyWise();
+            report.LoadData(data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
+
         private void printPreviewBarItem27_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();

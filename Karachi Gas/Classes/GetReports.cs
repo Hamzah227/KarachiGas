@@ -100,6 +100,8 @@ namespace Karachi_Gas.Classes
             }
         }
 
+        
+
         public void Calculations()
         {
             List<Int64> calculatedAccounts = new List<Int64>();
@@ -146,19 +148,33 @@ namespace Karachi_Gas.Classes
     }
     class GetCustomerSummaryPartyWise : AbstractMembers
     {
-        public static Int64 compId, partyId;
-        public override List<Models.GetCustSummarPartyWise> PrintCustomerSummaryPartyWise(Int64 partyId) 
+        List<AccountSummary> accountSummary;
+        Int64 totalC;
+        Int64 totalD;
+        Int64 totalS;
+
+        Int64 totalC_E;
+        Int64 totalD_E;
+        Int64 totalS_E;
+
+        Int64 remC;
+        Int64 remD;
+        Int64 remS;
+        DataTable dt;
+        DataTable dtNew;
+        List<AccountSummary> list;
+        public override List<AccountSummary> PrintCustomerSummary(Int64 partyId)
         {
-            DataTable dt;
             try
             {
-                List<Models.GetCustSummarPartyWise> list;
                 ErrorResponse response = new ErrorResponse();
-                dt = DBService.FetchTable("EXEC GetCustomerSummary " + 0 + "," + partyId);
+                dt = DBService.FetchTable("EXEC GetAccountsSummary");
+                dtNew = DBService.FetchTable("EXEC GetCompany 0");
                 if (!response.Error)
                 {
-                    list = dt.ToList<Models.GetCustSummarPartyWise>();
-                    return list;
+                    list = dt.ToList<AccountSummary>();
+                    Calculations(partyId);
+                    return accountSummary;
                 }
                 return null;
             }
@@ -167,7 +183,58 @@ namespace Karachi_Gas.Classes
                 XtraMessageBox.Show(ae.Message, "CustomerSummary", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-            return null;
+        }
+
+        public void Calculations(Int64 partyId)
+        {
+            try
+            {
+                string expression = string.Empty;
+                accountSummary = new List<AccountSummary>();
+                List<DateTime> distinctDates = new List<DateTime>();
+                distinctDates = list.Select(x => x.DTStamp.Date).Distinct().OrderByDescending(x => x.Date).Reverse().ToList();
+                list = list.Where(x => x.PartyAccID == partyId).ToList();
+                foreach (DateTime date in distinctDates)
+                {
+                    AccountSummary[] items = list.Where(x => x.DTStamp.Date == date).ToArray();
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        expression = "AccID = " + (items[i].Type_ != "SAL" ? items[i].CompAccID.ToString() : "");
+                        Sum(items[i].PartyAccID, date);
+                    }
+                    if (items.Length != 0)
+                    {
+                        accountSummary.Add(new AccountSummary()
+                        {
+                            PartyAccID = items[0].PartyAccID,
+                            PartyBalance = items[0].PartyBalance,
+                            CompTitle = expression.Any(char.IsDigit) ? dtNew.Select(expression)[0].Field<string>("Name") : "SALE",
+                            CompAccID = items[0].CompAccID,
+                            QtyC = remC,
+                            QtyD = remD,
+                            QtyS = remS,
+                            DTStamp = date
+                        });
+                    }
+                }
+            }
+            catch (Exception e)
+            { }
+        }
+
+        void Sum(Int64 AccId, DateTime date)
+        {
+            totalC = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyC);
+            totalD = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyD);
+            totalS = list.Where(x => x.Type_ == "SAL" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyS);
+
+            totalC_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyC);
+            totalD_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyD);
+            totalS_E = list.Where(x => x.Type_ == "EMP" && x.PartyAccID == AccId && x.DTStamp.Date == date).Sum(x => x.QtyS);
+            
+            remC = totalC - totalC_E;
+            remD = totalD - totalD_E;
+            remS = totalS - totalS_E;
         }
     }
     class GetSaleDetails : AbstractMembers
